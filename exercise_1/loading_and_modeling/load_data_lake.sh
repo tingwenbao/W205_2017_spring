@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 
 # save my current directory
 MY_CWD=$(pwd)
@@ -18,20 +18,41 @@ wget "$MY_URL" -O medicare_data.zip
 unzip -f medicare_data.zip
 
 # remove first line of files and rename
-OLD_FILE="Hospital General Information.csv"
-NEW_FILE="hospitals.csv"
 
-tail -n +2 "$OLD_FILE">$NEW_FILE
+# File1: Hospital General Informaion
+OLD_FILE1="Hospital General Information.csv"
+NEW_FILE1="hospitals.csv"
+tail -n +2 "$OLD_FILE1">$NEW_FILE1
 
-# TBD - 4 other files
+# File2: Timely and effective care
+OLD_FILE2="Timely and Effective Care - Hospital.csv"
+NEW_FILE2="effective_care.csv"
+tail -n +2 "$OLD_FILE2">$NEW_FILE2
+
+# File3: Readmissions and deaths
+OLD_FILE3="Readmissions and Deaths - Hospital.csv"
+NEW_FILE3="readmissions.csv"
+tail -n +2 "$OLD_FILE3">$NEW_FILE3
+
+# File4: Mapping of measure to codes
+OLD_FILE4="Measure Dates.csv"
+NEW_FILE4="Measures.csv"
+tail -n +2 "$OLD_FILE4">$NEW_FILE4
+
+# File5: Example of survey response
+OLD_FILE5="hvbp_hcahps_11_10_2016.csv"
+NEW_FILE5="surveys_responses.csv"
+tail -n +2 "$OLD_FILE5">$NEW_FILE5
 
 # create hdfs directory
 hdfs dfs -mkdir /user/w205/hospital_compare
 
-# copy the files to hdfs
-hdfs dfs -put $NEW_FILE /user/w205/hospital_compare
-
-# TBD 4 other files
+# copy the 5 files to hdfs
+hdfs dfs -put $NEW_FILE1 /user/w205/hospital_compare
+hdfs dfs -put $NEW_FILE2 /user/w205/hospital_compare
+hdfs dfs -put $NEW_FILE3 /user/w205/hospital_compare
+hdfs dfs -put $NEW_FILE4 /user/w205/hospital_compare
+hdfs dfs -put $NEW_FILE5 /user/w205/hospital_compare
 
 # change directory back to the original
 cd $MY_CWD
