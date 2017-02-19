@@ -15,7 +15,7 @@ MY_URL="https://data.medicare.gov/views/bg9k-emty/files/6c902f45-e28b-42f5-9f96-
 wget "$MY_URL" -O medicare_data.zip
 
 # unzip medicare data
-unzip -f medicare_data.zip
+unzip medicare_data.zip
 
 # remove first line of files and rename
 
