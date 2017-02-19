@@ -47,12 +47,19 @@ tail -n +2 "$OLD_FILE5">$NEW_FILE5
 # create hdfs directory
 hdfs dfs -mkdir /user/w205/hospital_compare
 
-# copy the 5 files to hdfs
-hdfs dfs -put $NEW_FILE1 /user/w205/hospital_compare
-hdfs dfs -put $NEW_FILE2 /user/w205/hospital_compare
-hdfs dfs -put $NEW_FILE3 /user/w205/hospital_compare
-hdfs dfs -put $NEW_FILE4 /user/w205/hospital_compare
-hdfs dfs -put $NEW_FILE5 /user/w205/hospital_compare
+# create hdfs directory for each of the data files
+hdfs dfs -mkdir /user/w205/hospital_compare/$NEW_FILE1
+hdfs dfs -mkdir /user/w205/hospital_compare/$NEW_FILE2
+hdfs dfs -mkdir /user/w205/hospital_compare/$NEW_FILE3
+hdfs dfs -mkdir /user/w205/hospital_compare/$NEW_FILE4
+hdfs dfs -mkdir /user/w205/hospital_compare/$NEW_FILE5
+
+# copy the 5 files to their own hdfs directory
+hdfs dfs -put $NEW_FILE1 /user/w205/hospital_compare/$NEW_FILE1
+hdfs dfs -put $NEW_FILE2 /user/w205/hospital_compare/$NEW_FILE2
+hdfs dfs -put $NEW_FILE3 /user/w205/hospital_compare/$NEW_FILE3
+hdfs dfs -put $NEW_FILE4 /user/w205/hospital_compare/$NEW_FILE4
+hdfs dfs -put $NEW_FILE5 /user/w205/hospital_compare/$NEW_FILE5
 
 # change directory back to the original
 cd $MY_CWD
