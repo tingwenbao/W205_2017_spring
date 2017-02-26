@@ -1,3 +1,6 @@
+create table hospital_score
+as
+
 select 
 b.provider_id
 ,b.hospital_name
@@ -64,6 +67,38 @@ from hospitals
 
 where a.hospital_overall_rating is not NuLL
 ) b
+;
 
-order by hospital_overall_rating desc, mean_score desc, variance asc
-limit 10;
+
+create table survey_score
+as
+
+select
+a.provider_id
+,a.overall_performance_rt
+,(pow(comm_nurse_performance_rt-mean_score,2)+pow(comm_doct_performance_rt-mean_score,2)+pow(resp_staff_performance_rt-mean_score,2)+pow(pain_management_performance_rt-mean_score,2)+pow(comm_med_performance_rt-mean_score,2)+pow(environment_performance_rt-mean_score,2))/6 as variance
+
+from 
+(
+select 
+provider_id
+,overall_performance_rt
+,comm_nurse_performance_rt
+,comm_doct_performance_rt
+,resp_staff_performance_rt
+,pain_management_performance_rt
+,comm_med_performance_rt
+,environment_performance_rt
+,(comm_nurse_performance_rt+comm_doct_performance_rt+resp_staff_performance_rt+pain_management_performance_rt+comm_med_performance_rt+environment_performance_rt)/6 as mean_score
+from survey_responses
+where overall_performance_rt is not NULL
+) a
+;
+
+
+select
+corr(a.score_mean, b.overall_performance_rt) as corr_performance
+,corr(a.variance, b.variance) as corr_variance
+from hospital_score a 
+inner join survey_score b 
+on a.provider_id=b.provider_id;
