@@ -1,51 +1,41 @@
 CREATE TABLE hospitals 
 AS 
+
 SELECT 
 provider_id
 ,hospital_name
 ,state
-,hospital_overall_rating
 
-,(case mortality_ntl_comparison 
-when 'Above the National average' then 3
-when 'Same as the National average' then 2
-when 'Below the National average' then 1
-else 0 end) as mortality_score
+, (case  
+when hospital_overall_rating='Not Available' then NULL
+else cast(hospital_overall_rating as decimal(1,0)) end) as hospital_overall_rating
 
-,(case safety_care_ntl_comparison 
-when 'Above the National average' then 3
-when 'Same as the National average' then 2
-when 'Below the National average' then 1
-else 0 end) as safety_score
+, (case  
+when mortality_ntl_comparison='Not Available' then NULL
+else mortality_ntl_comparison end) as mortality_national_comparison
 
-,(case readmission_ntl_comparison 
-when 'Above the National average' then 3
-when 'Same as the National average' then 2
-when 'Below the National average' then 1
-else 0 end) as readmission_score
+, (case  
+when safety_care_ntl_comparison='Not Available' then NULL
+else safety_care_ntl_comparison end) as safety_national_comparison
 
-,(case patient_exp_ntl_comparison 
-when 'Above the National average' then 3
-when 'Same as the National average' then 2
-when 'Below the National average' then 1
-else 0 end) as patient_exp_score
+, (case  
+when readmission_ntl_comparison='Not Available' then NULL
+else readmission_ntl_comparison end) as readmission_national_comparison
 
-,(case effectiveness_care_ntl_comparison 
-when 'Above the National average' then 3
-when 'Same as the National average' then 2
-when 'Below the National average' then 1
-else 0 end) as effectiveness_score
+, (case  
+when patient_exp_ntl_comparison='Not Available' then NULL
+else patient_exp_ntl_comparison end) as experience_national_comparison
 
-,(case timeliness_care_ntl_comparison 
-when 'Above the National average' then 3
-when 'Same as the National average' then 2
-when 'Below the National average' then 1
-else 0 end) as timeliness_score
+, (case  
+when effectiveness_care_ntl_comparison='Not Available' then NULL
+else effectiveness_care_ntl_comparison end) as effectiveness_national_comparison
 
-,(case efficient_medimage_ntl_comparison 
-when 'Above the National average' then 3
-when 'Same as the National average' then 2
-when 'Below the National average' then 1
-else 0 end) as medimage_score 
+, (case  
+when timeliness_care_ntl_comparison='Not Available' then NULL
+else timeliness_care_ntl_comparison end) as timeliness_national_comparison
 
+, (case  
+when efficient_medimage_ntl_comparison='Not Available' then NULL
+else efficient_medimage_ntl_comparison end) as efficient_national_comparison
+ 
 FROM hospitals_schema;
