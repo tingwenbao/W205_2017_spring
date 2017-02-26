@@ -1,0 +1,11 @@
+Are average scores for hospital quality or procedural variability correlated with patient survey responses?
+
+The correlation of average hospital quality scores is: 0.42
+The correlation of variability is: 0.02
+
+Although the measure hospital had been evaluated are different from the survey questions, the average hospital quality score have positive correlation with survey responses. However, the variance barely have any correlation between hospital score and survey responses.
+
+The possible reasons to explain this are:
+1. The performance of hospital on measures might not accurately perceived by patients. The measures are much more objective than survey questions thus there might not be linear relationship between both
+2. Each measure is taken from different time periods however survey are all taken within the same period of time. If the performance of the hospital is not consistent, there will be less correlation because the two is not comparable.
+3. Sample size for evaluating each measure could be different (some are based on partial sample). A not complete sample might not be representative of the population. Thus the score it derived might not accurately reflect hospital's performance.
