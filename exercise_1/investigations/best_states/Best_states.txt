@@ -1,0 +1,17 @@
+10 states are models of high-quality care:
+State	avg_overall_score	hospital_count	sum_avg_matrix_score	sum_stddev
+SD      3.8571  14      15      5.375                                           
+DE	3.6667	6	14.5	3.955
+WI	3.6111	108	13.389	5.685
+MN	3.5316	79	12.848	5.398
+ID	3.5263	19	12.263	6.331
+IN	3.4815	108	13.648	5.735
+NH	3.48	25	11.84	5.624
+CO	3.451	51	14	5.095
+UT	3.4483	29	13.655	5.018
+ME	3.4375	32	12.563	5.056
+
+Approach:
+
+My approach for this question is similar to the best hostpital questions but aggregated on state level. It is ranked by having the highest average overall rating and sum of average matrix scores and the lowest standard deviation. And I treat Not Availables the same as the previous questions for the reasons I mentioned previously.
+
