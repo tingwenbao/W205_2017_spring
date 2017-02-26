@@ -1,0 +1,24 @@
+10 Examples of the hospitals which are models of high-quality care:
+Provider ID	Hospital Name	Hospital Overall Rating	Score Mean	 Variance
+450023	CITIZENS MEDICAL CENTER	5	2.86	0.122
+160029	MERCY HOSPITAL	5	2.71	0.204
+140186	RIVERSIDE MEDICAL CENTER	5	2.71	0.204
+430014	AVERA ST LUKES	5	2.71	0.204
+430095	AVERA HEART HOSPITAL OF SOUTH DAKOTA	5	2.71	0.204
+260006	MOSAIC LIFE CARE AT ST JOSEPH	5	2.71	0.204
+360077	FAIRVIEW HOSPITAL	5	2.71	0.204
+30103	MAYO CLINIC HOSPITAL	5	2.57	0.245
+100087	SARASOTA MEMORIAL HOSPITAL	5	2.57	0.245
+50238	METHODIST HOSPITAL OF SOUTHERN CA	5	2.57	0.245
+
+Approach:
+
+	By looking at the data, hospitals are evaluated by various aspect of their procedures. In order to be a model of high-quality care, a hospital should be first having high overall ratings, and at the same time, doing relatively well on all aspects.
+
+	I was first looking at the overall ratings which is a score based on each measures it evaluates and should be able to best answer this question but not granular enough to rank each hospital towards others. So I had to look into its performance on each of the 7 matrix.  
+
+	So, based on the observations above, I had created a scoring mechanism to rank the hospitals. It is equally weighted on each matrix and the score is: above national average=3; same as national average=2; below national average=1. Then I create the mean and variance of those 7 matrix for each hospital and rank them by having the highest overal rating and mean score, and the lowest variance hospitals on the top.
+
+	For the "Not Available" values in the overall rating and each matrix, I exclude record with NA in overall ratings from the analysis and treat those with overall score but has NA in some of the matrix as 0. I was counting how many record I would have to remove if I want to remove all with not availables and it is nearly half of the records. I think removing NA in this case will not keep the representative of the population so I decide to keep those with an actual overall rating. After decide to keep records with some not available values, I decide to treat them as 0 because I want to penalize those with unknown but potentially poor behavoir in my analysis. I would like the hospital I listed perform well on every aspect of the matrix for sure.
+ 
+
