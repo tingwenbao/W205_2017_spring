@@ -1,3 +1,5 @@
 derby.log
 derby.log/
 metastore_db/
+TwitterCredentials.py
+*.pyc
