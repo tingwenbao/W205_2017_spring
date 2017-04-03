@@ -28,7 +28,7 @@ def auth_get(auth_key):
         return twitter_credentials[auth_key]
     return None
 
-5. cd back to extweetwordcount folder, run the app with : sparse run. Run it for as long as you want and use Cntrl+C to stop
+5.cd back to extweetwordcount folder, run the app with : sparse run. Run it for as long as you want and use Cntrl+C to stop
 6. To see the result, run the finalresults.py in the same directory: python finalresults.py <the word you want to search>. If you don't include a specific word, it will return all
 7. To see words within certain range, run the histogram.py in the same directory: python histogram.py number1,number2
 
